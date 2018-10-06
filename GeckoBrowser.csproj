@@ -185,7 +185,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /E /Y "$(TargetDir)." "$(ProjectDir)..\output\GeckoBrowser\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /E /Y "$(ProjectDir)\Firefox\*" "$(TargetDir)\Firefox\"
+xcopy /E /Y "$(TargetDir)." "$(ProjectDir)..\output\GeckoBrowser\"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets" Condition="Exists('..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
