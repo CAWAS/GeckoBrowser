@@ -184,13 +184,16 @@
     <Content Include="Firefox\xul.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /E /Y "$(TargetDir)." "$(ProjectDir)..\output\GeckoBrowser\"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets" Condition="Exists('..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets'))" />
   </Target>
-  <Import Project="..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets" Condition="Exists('..\packages\Geckofx60.32.60.0.13-alpha\build\Geckofx60.32.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
