@@ -71,11 +71,13 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Geckofx-Core, Version=60.0.25.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
-      <HintPath>..\packages\Geckofx60.32.60.0.25\lib\net45\Geckofx-Core.dll</HintPath>
+    <Reference Include="Geckofx-Core, Version=60.0.26.0, Culture=neutral, PublicKeyToken=3209ac31600d1857">
+      <HintPath>..\packages\Geckofx60.32.60.0.26\lib\net45\Geckofx-Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Geckofx-Winforms, Version=60.0.25.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
-      <HintPath>..\packages\Geckofx60.32.60.0.25\lib\net45\Geckofx-Winforms.dll</HintPath>
+    <Reference Include="Geckofx-Winforms, Version=60.0.26.0, Culture=neutral, PublicKeyToken=3209ac31600d1857">
+      <HintPath>..\packages\Geckofx60.32.60.0.26\lib\net45\Geckofx-Winforms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -123,7 +125,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Firefox\AccessibleHandler.dll" />
+    <None Include="Firefox\AccessibleMarshal.dll" />
+    <None Include="Firefox\breakpadinjector.dll" />
+    <None Include="Firefox\d3dcompiler_47.dll" />
+    <None Include="Firefox\freebl3.dll" />
+    <None Include="Firefox\IA2Marshal.dll" />
+    <None Include="Firefox\lgpllibs.dll" />
+    <None Include="Firefox\libEGL.dll" />
+    <None Include="Firefox\libGLESv2.dll" />
+    <None Include="Firefox\mozavcodec.dll" />
+    <None Include="Firefox\mozavutil.dll" />
+    <None Include="Firefox\mozglue.dll" />
+    <None Include="Firefox\nss3.dll" />
+    <None Include="Firefox\nssckbi.dll" />
+    <None Include="Firefox\nssdbm3.dll" />
     <None Include="Firefox\omni.ja" />
+    <None Include="Firefox\plugin-container.exe" />
+    <None Include="Firefox\plugin-hang-ui.exe" />
+    <None Include="Firefox\qipcap.dll" />
+    <None Include="Firefox\softokn3.dll" />
+    <None Include="Firefox\xul.dll" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,39 +183,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Firefox\AccessibleHandler.dll" />
-    <Content Include="Firefox\AccessibleMarshal.dll" />
-    <Content Include="Firefox\breakpadinjector.dll" />
-    <Content Include="Firefox\d3dcompiler_47.dll" />
-    <Content Include="Firefox\freebl3.dll" />
-    <Content Include="Firefox\IA2Marshal.dll" />
-    <Content Include="Firefox\lgpllibs.dll" />
-    <Content Include="Firefox\libEGL.dll" />
-    <Content Include="Firefox\libGLESv2.dll" />
-    <Content Include="Firefox\mozavcodec.dll" />
-    <Content Include="Firefox\mozavutil.dll" />
-    <Content Include="Firefox\mozglue.dll" />
-    <Content Include="Firefox\nss3.dll" />
-    <Content Include="Firefox\nssckbi.dll" />
-    <Content Include="Firefox\nssdbm3.dll" />
-    <Content Include="Firefox\plugin-container.exe" />
-    <Content Include="Firefox\plugin-hang-ui.exe" />
-    <Content Include="Firefox\qipcap.dll" />
-    <Content Include="Firefox\softokn3.dll" />
-    <Content Include="Firefox\xul.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /E /Y "$(ProjectDir)\Firefox\*" "$(TargetDir)\Firefox\"
 xcopy /E /Y "$(TargetDir)." "$(ProjectDir)..\output\GeckoBrowser\"</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\Geckofx60.32.60.0.25\build\Geckofx60.32.targets" Condition="Exists('..\packages\Geckofx60.32.60.0.25\build\Geckofx60.32.targets')" />
+  <Import Project="..\packages\Geckofx60.32.60.0.26\build\Geckofx60.32.targets" Condition="Exists('..\packages\Geckofx60.32.60.0.26\build\Geckofx60.32.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Geckofx60.32.60.0.25\build\Geckofx60.32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Geckofx60.32.60.0.25\build\Geckofx60.32.targets'))" />
+    <Error Condition="!Exists('..\packages\Geckofx60.32.60.0.26\build\Geckofx60.32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Geckofx60.32.60.0.26\build\Geckofx60.32.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

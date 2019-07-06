@@ -867,6 +867,10 @@ namespace GeckoBrowser
 			SetVolumeState();
 		}
 
+		public void SendMouseEvent(string type, double x, double y)
+		{
+		}
+
 
 		private void SetVolumeState()
 		{
