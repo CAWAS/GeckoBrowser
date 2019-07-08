@@ -871,6 +871,11 @@ namespace GeckoBrowser
 		{
 		}
 
+		public byte[] TakeScreenShotAsPngBytes()
+		{
+			return new byte[] { };
+		}
+
 
 		private void SetVolumeState()
 		{
